@@ -14,10 +14,7 @@ def closest_zero(street_length, street):
             d = abs(i - zeros[z_i])
             d_next = abs(i - zeros[z_i + 1])
 
-            if d < d_next:
-                digit = d
-            else:
-                digit = d_next
+            digit = min(d, d_next)
 
             if i == zeros[z_i + 1]:
                 z_i += 1
