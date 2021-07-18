@@ -29,5 +29,5 @@ if __name__ == '__main__':
     input()
     print(' '.join([
         str(number)
-        for number in closest_zero(input().rstrip().split(' '))
+        for number in closest_zero(street=input().rstrip().split(' '))
     ]))
