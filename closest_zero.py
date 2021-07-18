@@ -1,4 +1,4 @@
-# Solution ID: 52177413
+# Solution ID: 52177445
 def closest_zero(street):
     street_length = len(street)
     zeros = [i for (i, e) in enumerate(street) if e == '0']
