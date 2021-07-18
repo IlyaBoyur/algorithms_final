@@ -10,7 +10,7 @@ def sleight_of_hand(keys_count, matrix_cells):
 
 if __name__ == '__main__':
     keys_count = int(input())
-    matrix_cells = []
+    matrix_cells = [''] * MATRIX_ROW_COUNT
     for i in range(MATRIX_ROW_COUNT):
-        matrix_cells.append(input().rstrip())
+        matrix_cells[i] = input().rstrip()
     print(sleight_of_hand(keys_count, ''.join(matrix_cells)))
