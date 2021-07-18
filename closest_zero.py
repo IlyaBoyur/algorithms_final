@@ -7,11 +7,11 @@ def closest_zero(street):
     for i in range(zeros[0]):
         result[i] = zeros[0] - i
     # Between first and last zeros (if any)
-    first_zero = zeros[0]
-    for zero in zeros[1:]:
-        for i in range(first_zero, zero):
-            result[i] = min(i - first_zero, zero - i)
-        first_zero = zero
+    left_zero = zeros[0]
+    for right_zero in zeros[1:]:
+        for i in range(left_zero, right_zero):
+            result[i] = min(i - left_zero, right_zero - i)
+        left_zero = right_zero
     # After last zero
     for i in range(zeros[-1], street_length):
         result[i] = i - zeros[-1]
