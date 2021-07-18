@@ -1,7 +1,7 @@
+# Solution ID: 52177009
 MATRIX_ROW_COUNT = 4
 
 
-# Solution ID: 52166771
 def sleight_of_hand(keys_count, matrix_cells):
     k_x2 = keys_count * 2
     return sum([0 < matrix_cells.count(f'{digit}') <= k_x2
