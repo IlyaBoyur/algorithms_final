@@ -15,9 +15,12 @@ def closest_zero(street):
     # After last zero
     for i in range(zeros[-1], street_length):
         result[i] = i - zeros[-1]
-    return(' '.join([str(i) for i in result]))
+    return result
 
 
 if __name__ == '__main__':
     input()
-    print(closest_zero(input().rstrip().split(' ')))
+    print(' '.join([
+        str(i)
+        for i in closest_zero(input().rstrip().split(' '))
+    ]))
