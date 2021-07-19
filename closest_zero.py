@@ -27,7 +27,4 @@ def closest_zero(street, empty_pose_value='0', first_zero_index=0,
 
 if __name__ == '__main__':
     input()
-    print(' '.join([
-        str(number)
-        for number in closest_zero(street=input().rstrip().split(' '))
-    ]))
+    print(*closest_zero(street=input().split(' ')))
