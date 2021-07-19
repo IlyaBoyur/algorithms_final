@@ -14,12 +14,12 @@ def closest_zero(street, empty_pose_value='0'):
     # Between first and last zeros (if any)
     left_zero = first_zero
     for right_zero in zeros[1:]:
-        for number in range(left_zero, right_zero):
+        for number in range(left_zero + 1, right_zero):
             result[number] = min(number - left_zero, right_zero - number)
         left_zero = right_zero
     # After last zero
     last_zero = zeros[-1]
-    for number in range(last_zero, street_length):
+    for number in range(last_zero + 1, street_length):
         result[number] = number - last_zero
     return result
 
