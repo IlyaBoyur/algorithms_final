@@ -1,4 +1,4 @@
-# Solution ID: 52179765
+# Solution ID: 52181021
 def closest_zero(street, empty_pose_value='0'):
     street_length = len(street)
     zeros = [

@@ -1,4 +1,4 @@
-# Solution ID: 52179761
+# Solution ID: 52181056
 def sleight_of_hand(keys_count,  matrix_cells, players_count=2,
                     game_digits='123456789'):
     fingers_count = keys_count * players_count
