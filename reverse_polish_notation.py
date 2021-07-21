@@ -1,4 +1,4 @@
-# Solution ID: 52187536
+# Solution ID: 52202637	
 ERROR_STACK_EMPTY = 'stack empty error'
 ERROR_INVALID_OPERATOR = 'invalid operator error'
 ERROR_ZERO_DIVISION = 'zero division error'
