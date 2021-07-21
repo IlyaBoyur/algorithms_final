@@ -7,30 +7,9 @@ MULTIPLY = '*'
 DIVIDE = '/'
 
 
-class PolishNotationCalculator:
+class Stack:
     def __init__(self) -> None:
-        self.items = [None]
-
-    def calculate(self, operands):
-        try:
-            for argument in operands:
-                if argument.lstrip(MINUS).isdigit():
-                    self.push(int(argument))
-                elif argument == PLUS:
-                    self.push(self.pop() + self.pop())
-                elif argument == MULTIPLY:
-                    self.push(self.pop() * self.pop())
-                elif argument == MINUS:
-                    subtrahend = self.pop()
-                    self.push(self.pop() - subtrahend)
-                elif argument == DIVIDE:
-                    divider = self.pop()
-                    self.push(self.pop() // divider)
-        except IndexError:
-            return ERROR_INDEX
-        except ZeroDivisionError:
-            return ERROR_ZERO_DIVISION
-        return self.pop()
+        self.items = []
 
     def push(self, item):
         self.items.append(item)
@@ -39,6 +18,28 @@ class PolishNotationCalculator:
         return self.items.pop()
 
 
+def reverse_polish_calculate(operands):
+    stack = Stack()
+    try:
+        for argument in operands:
+            if argument.lstrip(MINUS).isdigit():
+                stack.push(int(argument))
+            elif argument == PLUS:
+                stack.push(stack.pop() + stack.pop())
+            elif argument == MULTIPLY:
+                stack.push(stack.pop() * stack.pop())
+            elif argument == MINUS:
+                subtrahend = stack.pop()
+                stack.push(stack.pop() - subtrahend)
+            elif argument == DIVIDE:
+                divider = stack.pop()
+                stack.push(stack.pop() // divider)
+    except IndexError:
+        return ERROR_INDEX
+    except ZeroDivisionError:
+        return ERROR_ZERO_DIVISION
+    return stack.pop()
+
+
 if __name__ == '__main__':
-    calculator = PolishNotationCalculator()
-    print(calculator.calculate(input().split(' ')))
+    print(reverse_polish_calculate(input().split(' ')))
