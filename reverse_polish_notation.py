@@ -45,4 +45,7 @@ def reverse_polish_calculate(operands):
 
 
 if __name__ == '__main__':
-    print(reverse_polish_calculate(input().split(' ')))
+    try:
+        print(reverse_polish_calculate(input().split(' ')))
+    except RuntimeError:
+        pass
