@@ -23,11 +23,11 @@ class Stack:
 
 def reverse_polish_calculate(operands):
     stack = Stack()
-    try:
-        for argument in operands:
-            if argument.lstrip(MINUS).isdigit():
-                stack.push(int(argument))
-            elif argument == PLUS:
+    for argument in operands:
+        try:
+            stack.push(int(argument))
+        except ValueError:
+            if argument == PLUS:
                 stack.push(stack.pop() + stack.pop())
             elif argument == MULTIPLY:
                 stack.push(stack.pop() * stack.pop())
@@ -39,8 +39,8 @@ def reverse_polish_calculate(operands):
                 stack.push(stack.pop() // divider)
             else:
                 return ERROR_INVALID_INPUT
-    except ZeroDivisionError:
-        return ERROR_ZERO_DIVISION
+        except ZeroDivisionError:
+            return ERROR_ZERO_DIVISION
     return stack.pop()
 
 
