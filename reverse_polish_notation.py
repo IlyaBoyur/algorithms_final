@@ -34,6 +34,8 @@ def reverse_polish_calculate(operands):
             elif argument == DIVIDE:
                 divider = stack.pop()
                 stack.push(stack.pop() // divider)
+            else:
+                return ERROR_INVALID_INPUT
     except IndexError:
         return ERROR_INDEX
     except ZeroDivisionError:
