@@ -4,7 +4,7 @@ ERROR_CODE = 'error'
 
 class Deque:
     def __init__(self, max_size):
-        self.queue = [None] * max_size
+        self.items = [None] * max_size
         self.max_size = max_size
         self.head = 0
         self.tail = 0
@@ -20,14 +20,14 @@ class Deque:
         if self.size == self.max_size:
             return ERROR_CODE
         self.head = (self.head - 1) % self.max_size
-        self.queue[self.head] = value
+        self.items[self.head] = value
         self.size += 1
 
     def pop_front(self):
         if self.is_empty():
             return ERROR_CODE
-        value = self.queue[self.head]
-        self.queue[self.head] = None
+        value = self.items[self.head]
+        self.items[self.head] = None
         self.head = (self.head + 1) % self.max_size
         self.size -= 1
         return value
@@ -35,7 +35,7 @@ class Deque:
     def push_back(self, value):
         if self.size == self.max_size:
             return ERROR_CODE
-        self.queue[self.tail] = value
+        self.items[self.tail] = value
         self.tail = (self.tail + 1) % self.max_size
         self.size += 1
 
@@ -43,8 +43,8 @@ class Deque:
         if self.is_empty():
             return ERROR_CODE
         self.tail = (self.tail - 1) % self.max_size
-        value = self.queue[self.tail]
-        self.queue[self.tail] = None
+        value = self.items[self.tail]
+        self.items[self.tail] = None
         self.size -= 1
         return value
 
