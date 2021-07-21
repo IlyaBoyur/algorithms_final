@@ -51,12 +51,12 @@ class Deque:
 if __name__ == '__main__':
     command_count = int(input())
     deque = Deque(max_size=int(input()))
-    while(command_count):
+    for command_id in range(command_count):
         command, *argument = input().split(' ')
         if command == 'push_front':
-            result = deque.push_front(argument[0])
+            result = deque.push_front(*argument)
         elif command == 'push_back':
-            result = deque.push_back(argument[0])
+            result = deque.push_back(*argument)
         elif command == 'pop_front':
             result = deque.pop_front()
         elif command == 'pop_back':
