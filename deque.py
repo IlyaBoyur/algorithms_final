@@ -52,15 +52,10 @@ if __name__ == '__main__':
     command_count = int(input())
     deque = Deque(max_size=int(input()))
     for command_id in range(command_count):
-        command, *argument = input().split(' ')
-        if command == 'push_front':
-            result = deque.push_front(*argument)
-        elif command == 'push_back':
-            result = deque.push_back(*argument)
-        elif command == 'pop_front':
-            result = deque.pop_front()
-        elif command == 'pop_back':
-            result = deque.pop_back()
-        if result is not None:
-            print(result)
-        command_count -= 1
+        try:
+            command, *argument = input().split(' ')
+            result = getattr(deque, command)(*argument)
+            if result is not None:
+                print(result)
+        except AttributeError as error:
+            print(error)
