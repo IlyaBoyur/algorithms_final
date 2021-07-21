@@ -44,7 +44,6 @@ class Deque:
             return ERROR_CODE
         self.tail = (self.tail - 1) % self.max_size
         value = self.items[self.tail]
-        self.items[self.tail] = None
         self.size -= 1
         return value
 
@@ -52,7 +51,6 @@ class Deque:
 if __name__ == '__main__':
     command_count = int(input())
     deque = Deque(max_size=int(input()))
-    result = None
     while(command_count):
         command, *argument = input().split(' ')
         if command == 'push_front':
