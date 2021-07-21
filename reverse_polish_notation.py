@@ -1,5 +1,6 @@
 # Solution ID: 52187536
-ERROR_INDEX = 'index error'
+ERROR_STACK_EMPTY = 'stack empty error'
+ERROR_INVALID_INPUT = 'invalid input error'
 ERROR_ZERO_DIVISION = 'zero division error'
 MINUS = '-'
 PLUS = '+'
@@ -38,8 +39,6 @@ def reverse_polish_calculate(operands):
                 stack.push(stack.pop() // divider)
             else:
                 return ERROR_INVALID_INPUT
-    except IndexError:
-        return ERROR_INDEX
     except ZeroDivisionError:
         return ERROR_ZERO_DIVISION
     return stack.pop()
