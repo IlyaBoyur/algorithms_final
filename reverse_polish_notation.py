@@ -15,6 +15,8 @@ class Stack:
         self.items.append(item)
 
     def pop(self):
+        if len(self.items) == 0:
+            raise RuntimeError(ERROR_STACK_EMPTY)
         return self.items.pop()
 
 
