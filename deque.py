@@ -18,14 +18,14 @@ class Deque:
 
     def push_front(self, value):
         if self.size == self.max_size:
-            return ERROR_CODE
+            raise RuntimeError(ERROR_CODE)
         self.head = (self.head - 1) % self.max_size
         self.items[self.head] = value
         self.size += 1
 
     def pop_front(self):
         if self.is_empty():
-            return ERROR_CODE
+            raise RuntimeError(ERROR_CODE)
         value = self.items[self.head]
         self.items[self.head] = None
         self.head = (self.head + 1) % self.max_size
@@ -34,14 +34,14 @@ class Deque:
 
     def push_back(self, value):
         if self.size == self.max_size:
-            return ERROR_CODE
+            raise RuntimeError(ERROR_CODE)
         self.items[self.tail] = value
         self.tail = (self.tail + 1) % self.max_size
         self.size += 1
 
     def pop_back(self):
         if self.is_empty():
-            return ERROR_CODE
+            raise RuntimeError(ERROR_CODE)
         self.tail = (self.tail - 1) % self.max_size
         value = self.items[self.tail]
         self.size -= 1
@@ -57,5 +57,7 @@ if __name__ == '__main__':
             result = getattr(deque, command)(*argument)
             if result is not None:
                 print(result)
+        except RuntimeError as error:
+            print(error)
         except AttributeError as error:
             print(error)
