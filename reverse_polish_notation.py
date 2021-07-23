@@ -23,8 +23,7 @@ class Stack:
             raise RuntimeError(ERROR_STACK_EMPTY)
 
 
-def reverse_polish_calculate(operands):
-    stack = Stack()
+def reverse_polish_calculate(operands, stack=Stack()):
     for argument in operands:
         try:
             new_value = int(argument)
