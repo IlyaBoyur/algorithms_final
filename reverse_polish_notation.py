@@ -40,9 +40,4 @@ def reverse_polish_calculate(operands, stack=Stack(), digitizer=int,
 
 
 if __name__ == '__main__':
-    try:
-        print(reverse_polish_calculate(input().split(' ')))
-    except ValueError:
-        pass
-    except RuntimeError as error:
-        print(error)
+    print(reverse_polish_calculate(input().split(' ')))
