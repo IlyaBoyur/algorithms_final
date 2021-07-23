@@ -1,6 +1,6 @@
 # Solution ID: 52202637
 ERROR_STACK_EMPTY = 'stack empty error'
-ERROR_INVALID_OPERATOR = 'invalid operator error'
+ERROR_DIGITIZE = 'Failure in digitization: {argument}'
 OPERATORS = {
     '-': lambda left, right: left - right,
     '+': lambda left, right: left + right,
@@ -30,7 +30,7 @@ def reverse_polish_calculate(operands, stack=Stack(), digitizer=int,
             new_value = digitizer(argument)
         except ValueError:
             if argument not in operators:
-                raise ValueError(ERROR_INVALID_OPERATOR)
+                raise ValueError(ERROR_DIGITIZE.format(argument=argument))
             operand_right, operand_left = stack.pop(), stack.pop()
             new_value = operators[argument](operand_left,
                                             operand_right)
