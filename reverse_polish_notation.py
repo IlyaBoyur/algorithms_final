@@ -23,10 +23,10 @@ class Stack:
             raise RuntimeError(ERROR_STACK_EMPTY)
 
 
-def reverse_polish_calculate(operands, stack=Stack()):
+def reverse_polish_calculate(operands, stack=Stack(), digitizer=int):
     for argument in operands:
         try:
-            new_value = int(argument)
+            new_value = digitizer(argument)
         except ValueError:
             if argument not in OPERATORS:
                 raise ValueError(ERROR_INVALID_OPERATOR)
