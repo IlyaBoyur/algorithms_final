@@ -1,5 +1,6 @@
 # Solution ID: 52203117
 ERROR_CODE = 'error'
+ERROR_INVALID_COMMAND = 'Unsupported command: {command}'
 
 
 class Deque:
@@ -17,7 +18,7 @@ class Deque:
         return self.size == 0
 
     def push_front(self, value):
-        if self.get_size() == self.max_size:
+        if self.size == self.max_size:
             raise RuntimeError(ERROR_CODE)
         self.head = (self.head - 1) % self.max_size
         self.items[self.head] = value
@@ -32,7 +33,7 @@ class Deque:
         return value
 
     def push_back(self, value):
-        if self.get_size() == self.max_size:
+        if self.size == self.max_size:
             raise RuntimeError(ERROR_CODE)
         self.tail = (self.tail + 1) % self.max_size
         self.items[self.tail] = value
@@ -54,7 +55,7 @@ if __name__ == '__main__':
         try:
             command, *arguments = input().split(' ')
             result = getattr(deque, command)(*arguments)
-            if result is not None:
+            if 'pop' in command:
                 print(result)
         except RuntimeError as error:
             print(error)
