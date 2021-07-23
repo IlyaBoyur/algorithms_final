@@ -58,5 +58,5 @@ if __name__ == '__main__':
                 print(result)
         except RuntimeError as error:
             print(error)
-        except AttributeError as error:
-            print(error)
+        except AttributeError:
+            raise ValueError(ERROR_INVALID_COMMAND.format(command=command))
