@@ -47,7 +47,7 @@ class Deque:
 if __name__ == '__main__':
     command_count = int(input())
     deque = Deque(max_size=int(input()))
-    for command_id in range(command_count):
+    for _ in range(command_count):
         try:
             command, *arguments = input().split(' ')
             result = getattr(deque, command)(*arguments)
