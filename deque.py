@@ -26,7 +26,6 @@ class Deque:
         if self.is_empty():
             raise RuntimeError(ERROR_CODE)
         value = self.items[self.head]
-        self.items[self.head] = None
         self.head = (self.head + 1) % self.max_size
         self.size -= 1
         return value
