@@ -22,8 +22,9 @@ class Stack:
             raise RuntimeError(error)
 
 
-def reverse_polish_calculate(operands, stack=Stack(), digitizer=int,
+def reverse_polish_calculate(operands, stack=None, digitizer=int,
                              operators=OPERATORS):
+    stack = Stack() if stack is None else stack 
     for argument in operands:
         if argument in operators:
             right, left = stack.pop(), stack.pop()
