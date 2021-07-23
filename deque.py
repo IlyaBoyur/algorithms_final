@@ -49,8 +49,8 @@ if __name__ == '__main__':
     deque = Deque(max_size=int(input()))
     for command_id in range(command_count):
         try:
-            command, *argument = input().split(' ')
-            result = getattr(deque, command)(*argument)
+            command, *arguments = input().split(' ')
+            result = getattr(deque, command)(*arguments)
             if result is not None:
                 print(result)
         except RuntimeError as error:
