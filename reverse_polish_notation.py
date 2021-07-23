@@ -1,5 +1,6 @@
 # Solution ID: 52211296
 ERROR_DIGITIZE = 'Failure in digitization: {argument}'
+ERROR_STACK_EMPTY = 'Stack is empty'
 OPERATORS = {
     '-': lambda left, right: left - right,
     '+': lambda left, right: left + right,
@@ -18,8 +19,8 @@ class Stack:
     def pop(self):
         try:
             return self.items.pop()
-        except IndexError as error:
-            raise RuntimeError(error)
+        except IndexError:
+            raise IndexError(ERROR_STACK_EMPTY)
 
 
 def reverse_polish_calculate(operands, stack=None, digitizer=int,
