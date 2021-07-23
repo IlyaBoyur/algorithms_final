@@ -26,9 +26,8 @@ def reverse_polish_calculate(operands, stack=Stack(), digitizer=int,
                              operators=OPERATORS):
     for argument in operands:
         if argument in operators:
-            operand_right, operand_left = stack.pop(), stack.pop()
-            new_value = operators[argument](operand_left,
-                                            operand_right)
+            right, left = stack.pop(), stack.pop()
+            new_value = operators[argument](left, right)
         else:
             try:
                 new_value = digitizer(argument)
