@@ -26,14 +26,15 @@ class Stack:
 def reverse_polish_calculate(operands, stack=Stack(), digitizer=int,
                              operators=OPERATORS):
     for argument in operands:
-        try:
-            new_value = digitizer(argument)
-        except ValueError:
-            if argument not in operators:
-                raise ValueError(ERROR_DIGITIZE.format(argument=argument))
+        if argument in operators:
             operand_right, operand_left = stack.pop(), stack.pop()
             new_value = operators[argument](operand_left,
                                             operand_right)
+        else:
+            try:
+                new_value = digitizer(argument)
+            except ValueError:
+                raise ValueError(ERROR_DIGITIZE.format(argument=argument))
         stack.push(new_value)
     return stack.pop()
 
@@ -43,5 +44,5 @@ if __name__ == '__main__':
         print(reverse_polish_calculate(input().split(' ')))
     except ValueError:
         pass
-    except RuntimeError:
-        pass
+    except RuntimeError as error:
+        print(error)
