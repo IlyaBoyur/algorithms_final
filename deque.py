@@ -7,6 +7,7 @@ class Deque:
         self.items = [None] * max_size
         self.max_size = max_size
         self.head = 0
+        self.tail = 0
         self.size = 0
 
     def get_size(self):
@@ -33,13 +34,15 @@ class Deque:
     def push_back(self, value):
         if self.size == self.max_size:
             raise RuntimeError(ERROR_CODE)
-        self.items[(self.head + self.size) % self.max_size] = value
+        self.items[self.tail] = value
+        self.tail = (self.tail + 1) % self.max_size
         self.size += 1
 
     def pop_back(self):
         if self.is_empty():
             raise RuntimeError(ERROR_CODE)
-        value = self.items[(self.head + self.size - 1) % self.max_size]
+        self.tail = (self.tail - 1) % self.max_size
+        value = self.items[self.tail]
         self.size -= 1
         return value
 
