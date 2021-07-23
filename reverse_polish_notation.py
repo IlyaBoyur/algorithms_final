@@ -1,4 +1,4 @@
-# Solution ID: 52202637
+# Solution ID: 52211296
 ERROR_DIGITIZE = 'Failure in digitization: {argument}'
 OPERATORS = {
     '-': lambda left, right: left - right,
