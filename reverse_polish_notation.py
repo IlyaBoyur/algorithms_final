@@ -17,9 +17,10 @@ class Stack:
         self.items.append(item)
 
     def pop(self):
-        if len(self.items) == 0:
+        try:
+            return self.items.pop()
+        except IndexError:
             raise RuntimeError(ERROR_STACK_EMPTY)
-        return self.items.pop()
 
 
 def reverse_polish_calculate(operands):
