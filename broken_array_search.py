@@ -9,19 +9,19 @@ def binary_search(array, target, left, right):
     if array[0] < array[mid]:
         if target >= array[0]:
             if target > array[mid]:
-                return binary_search(array, target, mid+1, right)
+                return binary_search(array, target, mid + 1, right)
             return binary_search(array, target, left, mid)
-        return binary_search(array, target, mid+1, right)
+        return binary_search(array, target, mid + 1, right)
     # left broken part
     if target < array[0]:
         if target < array[mid]:
             return binary_search(array, target, left, mid)
-        return binary_search(array, target, mid+1, right)
+        return binary_search(array, target, mid + 1, right)
     return binary_search(array, target, left, mid)
 
 
 def broken_search(array, target):
-    return binary_search(array, target, 0, len(array)-1)
+    return binary_search(array, target, 0, len(array) - 1)
 
 
 if __name__ == '__main__':
