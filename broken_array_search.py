@@ -27,5 +27,5 @@ def broken_search(array, target):
 if __name__ == '__main__':
     input()
     target = int(input())
-    print(broken_search(array=[int(i) for i in input().split(' ')],
+    print(broken_search(array=[int(number) for number in input().split(' ')],
                         target=target))
