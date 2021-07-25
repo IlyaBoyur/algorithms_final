@@ -1,5 +1,7 @@
 # Solution ID: 52222119
-def quick_sort(array, left, right):
+
+
+def quick_sort(array):
     def partition(left, right):
         pivot = array[right]
         divider = left-1
@@ -11,12 +13,14 @@ def quick_sort(array, left, right):
         array[divider + 1], array[right] = (array[right],
                                             array[divider + 1])
         return divider + 1
-    if right <= left:
-        return
-    divider = partition(left, right)
-    quick_sort(array, left, divider - 1)
-    quick_sort(array, divider + 1, right)
-
+    def quick_sort_internal(left, right):
+        if right <= left:
+            return
+        divider = partition(left, right)
+        quick_sort_internal(left, divider - 1)
+        quick_sort_internal(divider + 1, right)
+    quick_sort_internal(0, len(array)-1)
+    return array
 
 if __name__ == '__main__':
     length = int(input())
@@ -24,5 +28,5 @@ if __name__ == '__main__':
                                 int(player[2]),
                                 player[0]))(input().split(' '))
                for _ in range(length)]
-    quick_sort(players, 0, length-1)
+    quick_sort(players)
     print(*[player[2] for player in players], sep='\n')
