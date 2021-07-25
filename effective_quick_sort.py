@@ -24,9 +24,9 @@ def quick_sort(array):
 
 if __name__ == '__main__':
     length = int(input())
-    players = [(lambda player: (-int(player[1]),
-                                int(player[2]),
-                                player[0]))(input().split(' '))
+    players = [(lambda login, task_count, fine: (-int(task_count),
+                                                int(fine),
+                                                login))(*input().split(' '))
                for _ in range(length)]
     quick_sort(players)
     print(*[player[2] for player in players], sep='\n')
