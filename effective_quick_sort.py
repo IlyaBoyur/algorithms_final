@@ -1,21 +1,21 @@
 # Solution ID: 52222119
-def quick_sort(array, left, right, reverse=False):
-    def partition(left, right, reverse=False):
+def quick_sort(array, left, right):
+    def partition(left, right):
         pivot = array[right]
-        partition_index = left-1
-        for index in range(left, right):
-            if array[index] < pivot:
-                partition_index += 1
-                array[partition_index], array[index] = (array[index],
-                                                        array[partition_index])
-        array[partition_index + 1], array[right] = (array[right],
-                                                    array[partition_index + 1])
-        return partition_index + 1
+        divider = left-1
+        for current in range(left, right):
+            if array[current] < pivot:
+                divider += 1
+                array[divider], array[current] = (array[current],
+                                                  array[divider])
+        array[divider + 1], array[right] = (array[right],
+                                            array[divider + 1])
+        return divider + 1
     if right <= left:
         return
-    partition_index = partition(left, right, reverse)
-    quick_sort(array, left, partition_index - 1, reverse)
-    quick_sort(array, partition_index + 1, right, reverse)
+    divider = partition(left, right)
+    quick_sort(array, left, divider - 1)
+    quick_sort(array, divider + 1, right)
 
 
 if __name__ == '__main__':
